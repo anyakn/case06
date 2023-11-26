@@ -62,9 +62,4 @@ def rhombus(x, y, r, n_r):
         rhombus(x, y+r, r/2, n_r - 1)
 
 
-rhombus(0, 0, 100, 4)
-
-
-
-
 turtle.done()
