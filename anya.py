@@ -63,3 +63,9 @@ def rhombus(x, y, r, n_r):
 
 
 turtle.done()
+
+def ice_1(n, size):
+    if n == 0:
+        turtle.fd(size)
+    else:
+        ice_1(n-1, si)

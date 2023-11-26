@@ -91,11 +91,6 @@ def ice_1(size, depth):
         ice_1(size, depth-1)
 
 
-depth = int(input('Глубина рекурсии:'))
-size = int(input('Длина стороны:'))
-ice_1(size, depth)
-
-
 def dandelion(size, depth):
     if depth == 0:
         turtle.forward(size)
