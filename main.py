@@ -60,8 +60,61 @@ def rhombus(x, y, r, n_r):
         rhombus(x, y-r, r/2, n_r - 1)
         rhombus(x, y+r, r/2, n_r - 1)
 
+def koch(size, depth):
+    if depth == 0:
+        turtle.forward(size)
+    else:
+        koch(size/3, depth-1)
+        turtle.left(60)
+        koch(size/3, depth-1)
+        turtle.right(120)
+        koch(size/3, depth-1)
+        turtle.left(60)
+        koch(size/3, depth-1)
 
-print('Доступные фракталы на рисования:', 'Бесконечные квадраты', 'Кривая Леви', 'Дракон', 'Ромб', sep='\n')
+
+def koch_snowflake(size, depth):
+    for i in range(3):
+        koch(size, depth)
+        turtle.right(120)
+
+def ice_1(size, depth):
+    if depth == 0:
+        turtle.forward(size)
+    else:
+        ice_1(size, depth-1)
+        turtle.left(90)
+        ice_1(size / 2, depth - 1)
+        turtle.right(180)
+        ice_1(size / 2, depth - 1)
+        turtle.left(90)
+        ice_1(size, depth-1)
+
+
+depth = int(input('Глубина рекурсии:'))
+size = int(input('Длина стороны:'))
+ice_1(size, depth)
+
+
+def dandelion(size, depth):
+    if depth == 0:
+        turtle.forward(size)
+    else:
+        turtle.forward(size)
+        for i in range(6):
+            dandelion(size/3, depth-1)
+            turtle.right(60)
+        turtle.backward(size)
+
+
+def dandelion_snowflake(size, depth):
+    for i in range(6):
+        dandelion(size, depth - 1)
+        turtle.right(60)
+
+
+print('Доступные фракталы на рисования:', 'Бесконечные квадраты', 'Кривая Леви', 'Дракон', 'Ромб', 'Снежинка Коха',
+      'Снежинка-одуванчик', 'Ледяной фрактал 1', sep='\n')
 
 k = 0
 while k < 1:
@@ -91,6 +144,24 @@ while k < 1:
         rr = int(input('Введите радиус: '))
         n = int(input('Введите глубину рекурсии: '))
         rhombus(xr, yr, rr, n)
+
+    elif choice == 'снежинка коха':
+        k += 1
+        depth = int(input('Глубина рекурсии:'))
+        size = int(input('Длина стороны:'))
+        koch_snowflake(size, depth)
+
+    elif choice == 'снежинка-одуванчик':
+        k += 1
+        depth = int(input('Глубина рекурсии:'))
+        size = int(input('Длина стороны:'))
+        dandelion_snowflake(size, depth)
+
+    elif choice == 'ледяной фрактал 1':
+        k += 1
+        depth = int(input('Глубина рекурсии:'))
+        size = int(input('Длина стороны:'))
+        ice_1(size, depth)
 
     else:
         print('Такого фрактала нет. Повторите попытку!')
