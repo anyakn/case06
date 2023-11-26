@@ -43,8 +43,26 @@ def dragon(n_d, size_d, sign):
         turtle.lt(45*sign)
 
 
-dragon(12, 300, 1)
+def rhombus(x, y, r, n_r):
+    if n_r == 0:
+        turtle.pu()
+        turtle.goto(x, y)
+        turtle.fd(-r)
+        turtle.lt(45)
+        turtle.pd()
+        for i in range(4):
+            turtle.fd(r * 2**0.5)
+            turtle.rt(90)
+        turtle.rt(45)
+    else:
+        rhombus(x, y, r, 0)
+        rhombus(x-r, y, r/2, n_r - 1)
+        rhombus(x+r, y, r/2, n_r - 1)
+        rhombus(x, y-r, r/2, n_r - 1)
+        rhombus(x, y+r, r/2, n_r - 1)
 
+
+rhombus(0, 0, 100, 4)
 
 
 
