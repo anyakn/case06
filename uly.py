@@ -1,4 +1,5 @@
 import turtle
+
 def minkowski(t, order, size):
     if order == 0:
         t.fd(size)
@@ -58,6 +59,6 @@ depth = 4
 size = 300
 for _ in range(3):
     snowflake(t, depth, size)
-    t.right(120)
+    t.rt(120)
 
 turtle.done()
