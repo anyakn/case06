@@ -1,7 +1,7 @@
 import turtle
 
-turtle.speed(100)
-
+turtle.speed(1)
+'''
 def dandelion(size, depth):
     if depth == 0:
         turtle.forward(size)
@@ -64,7 +64,24 @@ depth = int(input('Глубина рекурсии:'))
 size = int(input('Длина стороны:'))
 ice_1(size, depth)
 
-
-depth = int(input('Глубина рекурсии:'))
-size = int(input('Длина стороны:'))
 koch_snowflake(size, depth)
+
+'''
+def color_tree(depth, size):
+  turtle.colormode(255)
+  cg = 255 - int(depth * (250/6)) % 255
+  turtle.color(0, cg, 0)
+  if depth == 0:
+    return
+  else:
+    turtle.forward(size)
+    turtle.left(45)
+    color_tree(depth-1, size / 2)
+    turtle.right(90)
+    color_tree(depth-1, (size/2))
+    turtle.left(45)
+    turtle.backward(size)
+
+turtle.left(90)
+color_tree(depth, size)
+turtle.done()

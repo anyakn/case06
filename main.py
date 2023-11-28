@@ -108,7 +108,23 @@ def dandelion_snowflake(size, depth):
         turtle.right(60)
 
 
-print('Доступные фракталы на рисования:', 'Бесконечные квадраты', 'Кривая Леви', 'Дракон', 'Ромб', 'Снежинка Коха',
+def color_tree(depth, size):
+  turtle.colormode(255)
+  cg = 255 - int(depth * (250/6)) % 255
+  turtle.color(0, cg, 0)
+  if depth == 0:
+    return
+  else:
+    turtle.forward(size)
+    turtle.left(45)
+    color_tree(depth-1, size / 2)
+    turtle.right(90)
+    color_tree(depth-1, (size/2))
+    turtle.left(45)
+    turtle.backward(size)
+
+
+print('Доступные фракталы на рисования:', 'Бесконечные квадраты', 'Двоичное дерево', 'Кривая Леви', 'Дракон', 'Ромб', 'Снежинка Коха',
       'Снежинка-одуванчик', 'Ледяной фрактал 1', sep='\n')
 
 k = 0
@@ -157,6 +173,13 @@ while k < 1:
         depth = int(input('Глубина рекурсии:'))
         size = int(input('Длина стороны:'))
         ice_1(size, depth)
+
+    elif choice == 'двоичное дерево':
+        k += 1
+        depth = int(input('Глубина рекурсии:'))
+        size = int(input('Длина стороны:'))
+        turtle.left(90)
+        color_tree(depth, size)
 
     else:
         print('Такого фрактала нет. Повторите попытку!')
