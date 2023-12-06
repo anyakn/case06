@@ -1,4 +1,5 @@
 import turtle
+import ru_local as ru
 
 turtle.speed(-1)
 
@@ -60,6 +61,7 @@ def rhombus(x, y, r, n_r):
         rhombus(x, y-r, r/2, n_r - 1)
         rhombus(x, y+r, r/2, n_r - 1)
 
+
 def koch(size, depth):
     if depth == 0:
         turtle.forward(size)
@@ -77,6 +79,7 @@ def koch_snowflake(size, depth):
     for i in range(3):
         koch(size, depth)
         turtle.right(120)
+
 
 def ice_1(size, depth):
     if depth == 0:
@@ -123,6 +126,7 @@ def color_tree(depth, size):
     turtle.left(45)
     turtle.backward(size)
 
+
 def minkowski(order, size):
     if order == 0:
         turtle.fd(size)
@@ -158,77 +162,77 @@ def ice_fractal2(order, size):
         ice_fractal2(order - 1, size / 2)
 
 
-print('Доступные фракталы на рисования:', 'Бесконечные квадраты', 'Двоичное дерево',
-      'Кривая Леви', 'Дракон', 'Ромб', 'Снежинка Коха',
-      'Снежинка-одуванчик', 'Кривая Минковского', 'Ледяной фрактал 1', 'Ледяной фрактал 2', sep='\n')
+print(ru.cl1, ru.cl2, ru.cl3,
+      ru.cl4, ru.cl5, ru.cl6, ru.cl7,
+      ru.cl8, ru.cl9, ru.cl10, ru.cl11, sep='\n')
 
 k = 0
 while k < 1:
-    choice = input('Выберите фрактал: ').lower()
-    if choice == 'бесконечные квадраты':
+    choice = input(ru.ch1).lower()
+    if choice == ru.ch2:
         k += 1
-        size = int(input('Введите длину: '))
+        size = int(input(ru.ch3))
         rec_square(size)
 
-    elif choice == 'кривая леви':
+    elif choice == ru.ch4:
         k += 1
-        n = int(input('Введите глубину рекурсии: '))
-        size = int(input('Введите длину: '))
+        n = int(input(ru.ch5))
+        size = int(input(ru.ch3))
         levy(n, size)
 
-    elif choice == 'дракон':
+    elif choice == ru.ch6:
         k += 1
-        n = int(input('Введите глубину рекурсии: '))
-        size = int(input('Введите длину: '))
-        sign = int(input('Введите знак(-1 или 1): '))
+        n = int(input(ru.ch5))
+        size = int(input(ru.ch3))
+        sign = int(input(ru.ch7))
         dragon(n, size, sign)
 
-    elif choice == 'ромб':
+    elif choice == ru.ch8:
         k += 1
-        xr = int(input('Введите координату x: '))
-        yr = int(input('Введите координату y: '))
-        rr = int(input('Введите радиус: '))
-        n = int(input('Введите глубину рекурсии: '))
+        xr = int(input(ru.ch9))
+        yr = int(input(ru.ch10))
+        rr = int(input(ru.ch11))
+        n = int(input(ru.ch5))
         rhombus(xr, yr, rr, n)
 
-    elif choice == 'снежинка коха':
+    elif choice == ru.ch12:
         k += 1
-        depth = int(input('Глубина рекурсии:'))
-        size = int(input('Длина стороны:'))
+        depth = int(input(ru.ch5))
+        size = int(input(ru.ch3))
         koch_snowflake(size, depth)
 
-    elif choice == 'снежинка-одуванчик':
+    elif choice == ru.ch13:
         k += 1
-        depth = int(input('Глубина рекурсии:'))
-        size = int(input('Длина стороны:'))
+        depth = int(input(ru.ch5))
+        size = int(input(ru.ch3))
         dandelion_snowflake(size, depth)
 
-    elif choice == 'ледяной фрактал 1':
+    elif choice == ru.ch14:
         k += 1
-        depth = int(input('Глубина рекурсии:'))
-        size = int(input('Длина стороны:'))
+        depth = int(input(ru.ch5))
+        size = int(input(ru.ch3))
         ice_1(size, depth)
 
-    elif choice == 'двоичное дерево':
+    elif choice == ru.ch15:
         k += 1
-        depth = int(input('Глубина рекурсии:'))
-        size = int(input('Длина стороны:'))
+        depth = int(input(ru.ch5))
+        size = int(input(ru.ch3))
         turtle.left(90)
         color_tree(depth, size)
 
-    elif choice == 'кривая минковского':
+    elif choice == ru.ch16:
         k += 1
-        depth = int(input('Глубина рекурсии:'))
-        size = int(input('Длина стороны:'))
+        depth = int(input(ru.ch5))
+        size = int(input(ru.ch3))
         minkowski(depth, size)
 
-    elif choice == 'ледяной фрактал 2':
+    elif choice == ru.ch17:
         k += 1
-        depth = int(input('Глубина рекурсии:'))
-        size = int(input('Длина стороны:'))
+        depth = int(input(ru.ch5))
+        size = int(input(ru.ch3))
         ice_fractal2(depth, size)
 
     else:
-        print('Такого фрактала нет. Повторите попытку!')
+        print(ru.refuse)
 
 turtle.done()
