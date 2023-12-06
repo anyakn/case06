@@ -123,9 +123,44 @@ def color_tree(depth, size):
     turtle.left(45)
     turtle.backward(size)
 
+def minkowski(order, size):
+    if order == 0:
+        turtle.fd(size)
+    else:
+        minkowski(order-1, size/2)
+        turtle.lt(90)
+        minkowski(order-1, size/2)
+        turtle.rt(90)
+        minkowski(order-1, size/2)
+        turtle.rt(90)
+        minkowski(order-1, size)
+        turtle.lt(90)
+        minkowski(order-1, size/2)
+        turtle.lt(90)
+        minkowski(order-1, size/2)
+        turtle.rt(90)
+        minkowski(order-1, size/2)
 
-print('Доступные фракталы на рисования:', 'Бесконечные квадраты', 'Двоичное дерево', 'Кривая Леви', 'Дракон', 'Ромб', 'Снежинка Коха',
-      'Снежинка-одуванчик', 'Ледяной фрактал 1', sep='\n')
+def ice_fractal2(order, size):
+    if order == 0:
+        turtle.fd(size)
+    else:
+        ice_fractal2(order-1, size/2)
+        turtle.lt(120)
+        ice_fractal2(order-1, size/4)
+        turtle.rt(180)
+        ice_fractal2(order-1, size/4)
+        turtle.lt(120)
+        ice_fractal2(order-1, size/4)
+        turtle.rt(180)
+        ice_fractal2(order - 1, size / 4)
+        turtle.lt(120)
+        ice_fractal2(order - 1, size / 2)
+
+
+print('Доступные фракталы на рисования:', 'Бесконечные квадраты', 'Двоичное дерево',
+      'Кривая Леви', 'Дракон', 'Ромб', 'Снежинка Коха',
+      'Снежинка-одуванчик', 'Кривая Минковского', 'Ледяной фрактал 1', 'Ледяной фрактал 2', sep='\n')
 
 k = 0
 while k < 1:
@@ -180,6 +215,18 @@ while k < 1:
         size = int(input('Длина стороны:'))
         turtle.left(90)
         color_tree(depth, size)
+
+    elif choice == 'кривая минковского':
+        k += 1
+        depth = int(input('Глубина рекурсии:'))
+        size = int(input('Длина стороны:'))
+        minkowski(depth, size)
+
+    elif choice == 'ледяной фрактал 2':
+        k += 1
+        depth = int(input('Глубина рекурсии:'))
+        size = int(input('Длина стороны:'))
+        ice_fractal2(depth, size)
 
     else:
         print('Такого фрактала нет. Повторите попытку!')
